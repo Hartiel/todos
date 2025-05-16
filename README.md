@@ -1,17 +1,17 @@
 # Laravel Todo API
 
-API simples de gerenciamento de tarefas desenvolvida com Laravel. Esta aplicação foi criada com foco em autenticação via API usando Sanctum, suporte a refresh tokens e totalmente dockerizada para facilitar o setup e deploy.
+A simple task management API built with Laravel. This application focuses on API authentication using Sanctum, supports refresh tokens, and is fully dockerized for easy setup and deployment.
 
 ---
 
-## 🚀 Funcionalidades
+## 🚀 Features
 
-- Registro e login de usuários com autenticação via token (Sanctum)
-- Geração de **access token** e **refresh token**
-- CRUD completo de tarefas
-- Validação e tratamento de erros
-- Testes automatizados com PHPUnit
-- Docker e Docker Compose para facilitar o ambiente de desenvolvimento
+- User registration and login with token-based authentication (Sanctum)
+- Access token and refresh token generation
+- Full task CRUD
+ -Validation and error handling
+- Automated tests with PHPUnit
+- Docker and Docker Compose for an easy development environment
 
 ---
 
@@ -19,97 +19,97 @@ API simples de gerenciamento de tarefas desenvolvida com Laravel. Esta aplicaç�
 
 - PHP 8.2
 - Laravel 10
-- Sanctum (autenticação via API)
-- MySQL (ou outro banco via Docker)
+- Sanctum (API authentication)
+- MySQL (or other DB via Docker)
 - Docker & Docker Compose
 
 ---
 
-## 🐳 Como rodar com Docker
+## 🐳 Running with Docker
 
-### Pré-requisitos
+### Prerequisites
 
-- Docker instalado
+- Docker installed
 - Docker Compose
 
 ### Passo a passo
 
-1. Clone o repositório:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/seu-usuario/todo-api.git
 cd todo-api
 ```
 
-2. Copie o .env padrão:
+2. Copy the default .env file:
 
 ```bash
 cp .env.example .env
 ```
 
-3. Suba os containers:
+3. Start the containers:
 
 ```bash
 docker-compose up -d --build
 ```
 
-4. Instale as dependências do Laravel:
+4. Install Laravel dependencies:
 
 ```bash
 docker exec -it laravel_app composer install
 ```
 
-5. Gere a chave da aplicação e rode as migrations:
+5. Generate app key and run migrations:
 
 ```bash
 docker exec -it laravel_app php artisan key:generate
 docker exec -it laravel_app php artisan migrate
 ```
 
-A API estará disponível em: http://localhost:8000
+The API will be available at: http://localhost:8000
 
-## 🔐 Autenticação
+## 🔐 Authentication
 
-A API usa **Laravel Sanctum** para autenticação via tokens.
+The API uses Laravel Sanctum for token-based authentication.
 
-### Endpoints principais
+### Main Endpoints
 
-- `POST /api/register` – Registro de usuário
-- `POST /api/login` – Login e geração de tokens
-- `POST /api/refresh` – Gera novo access token a partir do refresh token
-- Requer autenticação:
-- `GET /api/todos` – Lista as tarefas
-- `POST /api/todos` – Cria uma nova tarefa
-- `PUT /api/todos/{id}` – Atualiza uma tarefa
-- `DELETE /api/todos/{id}` – Deleta uma tarefa
+- `POST /api/register` – User registration
+- `POST /api/login` – Login and token generation
+- `POST /api/refresh` – Generate new access token using refresh token
+- Requires authentication:
+- `GET /api/todos` – List tasks
+- `POST /api/todos` – Create a new task
+- `PUT /api/todos/{id}` – Update a task
+- `DELETE /api/todos/{id}` – Delete a task
 
-> Para rotas protegidas, envie o token no cabeçalho:  
+> For protected routes, send the token in the header:
 `Authorization: Bearer {access_token}`
 
 ---
 
-## 🧪 Testes
+## 🧪 Tests
 
-Os testes estão localizados em `tests/Feature/`.
+Tests are located in `tests/Feature/`.
 
-Para rodá-los, utilize:
+To run them, use:
 
 ```bash
 docker exec -it laravel_app php artisan test
 ```
 
-## 📁 Estrutura importante
+## 📁 Key Structure
 
-- app/Http/Controllers – Controladores REST da API
-- routes/api.php – Todas as rotas expostas
-- app/Models/Todo.php – Modelo principal da tarefa
-- database/factories/ – Factories para testes automatizados
-- tests/Feature/ – Testes de autenticação e tarefas
+- app/Http/Controllers – API REST controllers
+- routes/api.php – All exposed routes
+- app/Models/Todo.php – Main task model
+- database/factories/ – Factories for automated tests
+- tests/Feature/ – Auth and task tests
 
-## ✍️ Autor
+## ✍️ Author
 
-Feito com 💻 por Arthur Reis
+Built with 💻 by Arthur Reis
 
 ```bash
-Se quiser colocar exemplos de request/resposta ou tokens JWT, posso adicionar também. Só pedir!
+If you have any ideas for improvements or features to add, let me know ^^
 ```
